@@ -16,10 +16,8 @@ import pe.edu.cibertec.CL2.service.UsuarioDetalleService;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
-
     @Autowired
     private final UsuarioDetalleService usuarioDetalleService;
-
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception{
         http
@@ -36,7 +34,7 @@ public class SecurityConfig {
                 .authenticated()
                 .and()
                 .formLogin().loginPage("/auth/login")
-                .defaultSuccessUrl("/home")
+                .defaultSuccessUrl("/auth/registrar")
                 .usernameParameter("nomusuario")
                 .passwordParameter("password")
                 .and()
@@ -52,4 +50,6 @@ public class SecurityConfig {
         authenticationProvider.setPasswordEncoder(new BCryptPasswordEncoder());
         return authenticationProvider;
     }
+
+
 }

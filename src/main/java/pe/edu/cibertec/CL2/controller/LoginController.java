@@ -1,6 +1,8 @@
 package pe.edu.cibertec.CL2.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,7 +13,7 @@ import pe.edu.cibertec.CL2.service.UsuarioService;
 @Controller
 @RequestMapping("/auth")
 public class LoginController {
-
+    @Autowired
     private UsuarioService usuarioService;
     @GetMapping("/login")
     public String login(){
@@ -25,8 +27,7 @@ public class LoginController {
     @PostMapping("/guardarUsuario")
     public String guardarUsuario(@ModelAttribute Usuario usuario){
         usuarioService.guardarUsuario(usuario);
-        return "Auth/login";
+        return "Auth/frmLogin";
     }
-
 
 }

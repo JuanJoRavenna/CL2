@@ -31,8 +31,6 @@ public class Usuario {
     @Column(name = "apellidos")
     private String apellidos;
 
-
-
     @ManyToMany(cascade =  CascadeType.MERGE,
             fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_rol",
